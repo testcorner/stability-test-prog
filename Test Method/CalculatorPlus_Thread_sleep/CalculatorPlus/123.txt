@@ -1,0 +1,75 @@
+Incremental java compilation is an incubating feature.
+:preBuild UP-TO-DATE
+:preDebugBuild UP-TO-DATE
+:checkDebugManifest
+:preReleaseBuild UP-TO-DATE
+:prepareComAndroidSupportAppcompatV72100Library
+:prepareComAndroidSupportSupportV42100Library
+:prepareDebugDependencies
+:compileDebugAidl UP-TO-DATE
+:compileDebugRenderscript UP-TO-DATE
+:generateDebugBuildConfig UP-TO-DATE
+:generateDebugResValues UP-TO-DATE
+:generateDebugResources UP-TO-DATE
+:mergeDebugResources UP-TO-DATE
+:processDebugManifest UP-TO-DATE
+:processDebugResources UP-TO-DATE
+:generateDebugSources UP-TO-DATE
+:incrementalDebugJavaCompilationSafeguard UP-TO-DATE
+:javaPreCompileDebug
+:compileDebugJavaWithJavac UP-TO-DATE
+:compileDebugNdk UP-TO-DATE
+:compileDebugSources UP-TO-DATE
+:mergeDebugShaders UP-TO-DATE
+:compileDebugShaders UP-TO-DATE
+:generateDebugAssets UP-TO-DATE
+:mergeDebugAssets UP-TO-DATE
+:transformClassesWithDexForDebug UP-TO-DATE
+:mergeDebugJniLibFolders UP-TO-DATE
+:transformNativeLibsWithMergeJniLibsForDebug UP-TO-DATE
+:transformNativeLibsWithStripDebugSymbolForDebug UP-TO-DATE
+:processDebugJavaRes UP-TO-DATE
+:transformResourcesWithMergeJavaResForDebug UP-TO-DATE
+:validateSigningDebug
+:packageDebug UP-TO-DATE
+:assembleDebug UP-TO-DATE
+:preDebugAndroidTestBuild UP-TO-DATE
+:prepareComAndroidSupportTestEspressoEspressoCore222Library
+:prepareComAndroidSupportTestEspressoEspressoIdlingResource222Library
+:prepareComAndroidSupportTestExposedInstrumentationApiPublish05Library
+:prepareComAndroidSupportTestRules05Library
+:prepareComAndroidSupportTestRunner05Library
+:prepareDebugAndroidTestDependencies
+:compileDebugAndroidTestAidl UP-TO-DATE
+:processDebugAndroidTestManifest UP-TO-DATE
+:compileDebugAndroidTestRenderscript UP-TO-DATE
+:generateDebugAndroidTestBuildConfig UP-TO-DATE
+:generateDebugAndroidTestResValues UP-TO-DATE
+:generateDebugAndroidTestResources UP-TO-DATE
+:mergeDebugAndroidTestResources UP-TO-DATE
+:processDebugAndroidTestResources UP-TO-DATE
+:generateDebugAndroidTestSources UP-TO-DATE
+:incrementalDebugAndroidTestJavaCompilationSafeguard UP-TO-DATE
+:javaPreCompileDebugAndroidTest
+:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
+:compileDebugAndroidTestNdk UP-TO-DATE
+:compileDebugAndroidTestSources UP-TO-DATE
+:mergeDebugAndroidTestShaders UP-TO-DATE
+:compileDebugAndroidTestShaders UP-TO-DATE
+:generateDebugAndroidTestAssets UP-TO-DATE
+:mergeDebugAndroidTestAssets UP-TO-DATE
+:transformClassesWithDexForDebugAndroidTest UP-TO-DATE
+:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+:transformNativeLibsWithMergeJniLibsForDebugAndroidTest UP-TO-DATE
+:processDebugAndroidTestJavaRes UP-TO-DATE
+:transformResourcesWithMergeJavaResForDebugAndroidTest UP-TO-DATE
+:validateSigningDebugAndroidTest
+:packageDebugAndroidTest UP-TO-DATE
+:assembleDebugAndroidTest UP-TO-DATE
+:connectedDebugAndroidTest
+Starting 1 tests on Nexus_5X_API_24(AVD) - 7.0
+:connectedAndroidTest
+
+BUILD SUCCESSFUL
+
+Total time: 11.08 secs
