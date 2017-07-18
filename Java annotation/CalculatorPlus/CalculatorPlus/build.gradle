@@ -1,0 +1,92 @@
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+buildscript {
+    repositories {
+            mavenLocal()
+            mavenCentral()
+            jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+    }
+}
+
+apply plugin: "com.android.application"
+apply plugin: 'spoon'
+
+spoon {
+    // for debug output
+    debug = true
+
+    // To run a single test class
+    className = 'fully.qualified.TestCase'
+
+    // To run a single method in TestCase
+    methodName = 'testMyApp'
+
+    // To execute the tests device by device */
+    sequential = true
+
+    // To grant permissions to Android M >= devices */
+    grantAllPermissions = true
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        applicationId "com.google.android.apps.calculator"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        //testInstrumentationRunner 'com.android.calculator2.MyInstrumentationTestRunner'
+
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile "AndroidManifest.xml"
+            java.srcDirs = ["src"]
+            res.srcDirs = ["res"]
+            java.srcDirs = ['src']
+            java.excludes = ['androidTest/**']
+        }
+        androidTest.setRoot('src/androidTest')
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+repositories {
+    maven { url 'http://repo1.maven.org/maven2' }
+}
+
+dependencies {
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.6.4'
+    compile files("arity-2.1.2.jar")
+    compile 'com.android.support:support-v4:21.0.0'
+    compile 'javax.inject:javax.inject:1@jar'
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
