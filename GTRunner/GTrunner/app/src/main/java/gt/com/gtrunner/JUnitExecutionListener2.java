@@ -120,7 +120,7 @@ public class JUnitExecutionListener2 extends RunListener {
             FileWriter fw = new FileWriter(new File(extDir, filename));
             fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             fw.write("<testsuites>\n");
-            fw.write("<testsuite name=\"" + ClassName + "\" errors=\""+Errorcount+"\" skipped=\"" + result.getIgnoreCount() + "\" tests=\"" + result.getRunCount() + "\" failures=\"" +  failcount + "\" time=\"" + timeTotal + "\" timestamp=\"" + strDate + "\" />\n");
+            fw.write("<testsuite name=\"" + ClassName + "\" errors=\""+Errorcount+"\" skipped=\"" + result.getIgnoreCount() + "\" tests=\"" + result.getRunCount() + "\" failures=\"" +  failcount + "\" time=\"" + timeTotal + "\" timestamp=\"" + strDate + "\">\n");
             fw.flush();
             if (new File(extDir, "Failure.xml").exists()&&new File(extDir, "Error.xml").exists()&&new File(extDir, "Success.xml").exists())
             {
