@@ -33,7 +33,7 @@ public class JUnitExecutionListener extends RunListener {
     String Successname = "Success.xml";
     File extDir = Environment.getExternalStorageDirectory();
     long timeStart,timeFinish,timeTotalStart,timeTotalFinish,timeTotal,timecount;
-    String ClassName,strDate,FailureMes,FailureName ,FailureMess;
+    String ClassName,strDate,FailureMethod,FailureName,FailureMsg;
     int FailureCount ,testCount;
     Integer failcount,n;
     int count = 0;
@@ -46,28 +46,33 @@ public class JUnitExecutionListener extends RunListener {
     }
     @Override
     public void testFailure(Failure failure) throws Exception {
-       // Description description = null; ;
-        System.out.println();
-            SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            Date date = new Date();
-            String strDate2 = sdFormat.format(date);
-            long timefailuretime = System.currentTimeMillis();
-            long timefailure = TimeUnit.MILLISECONDS.toSeconds(timefailuretime);
-            long timecount2 = timefailure - timeStart;
+        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date = new Date();
+        String strDate2 = sdFormat.format(date);
+        long timefailuretime = System.currentTimeMillis();
+        long timefailure = TimeUnit.MILLISECONDS.toSeconds(timefailuretime);
+        long timecount2 = timefailure - timeStart;
 
-           // FailureName = failure.getTestHeader();
-            FailureName = failure.getDescription().getTestClass().getName();
-        System.out.println("fffff " + FailureName);
-            FailureMes = failure.getDescription().getMethodName();
-            FailureMess = failure.getTrace();
-            FileWriter fw2 = new FileWriter(new File(extDir, failurename), true);
-            fw2.write("<testcase classname=\"" + FailureName + "\" name=\"" + FailureMes + "\" time=\"" + timecount2 + "\">\n" +
-                    "<failure message=\"test failure\">" + FailureMess + "</failure>\n");
-            fw2.write("</testcase>\n");
-            fw2.close();
-            FailureCount++;
-            System.out.println("Count:          " + FailureCount);
-        }
+        FailureName = failure.getDescription().getTestClass().getName();
+        FailureMethod = failure.getDescription().getMethodName();
+        FailureMsg = escapeXML(failure.getTrace());
+        FileWriter fw2 = new FileWriter(new File(extDir, failurename), true);
+        fw2.write("<testcase classname=\"" + FailureName + "\" name=\"" + FailureMethod + "\" time=\"" + timecount2 + "\">\n" +
+                "<failure message=\"test failure\">" + FailureMsg + "</failure>\n");
+        fw2.write("</testcase>\n");
+        fw2.close();
+        FailureCount++;
+        System.out.println("FailureCount:" + FailureCount);
+    }
+
+    private String escapeXML(String xml) {
+        String result = xml.replaceAll("&", "&amp;")
+                           .replaceAll("<", "&lt;")
+                           .replaceAll(">", "&gt;")
+                           .replaceAll("\"", "&quot;")
+                           .replaceAll("'", "&apos;");
+        return result;
+    }
 
 
     @Override
